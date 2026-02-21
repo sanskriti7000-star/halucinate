@@ -1,0 +1,185 @@
+/* popup.css – Psychedelic dark-mode popup styling */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 240px;
+    background: #0a000f;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    padding: 24px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: radial-gradient(ellipse at top, #1a003a 0%, #0a000f 70%);
+}
+
+/* ── Eye ── */
+.eye-wrapper {
+    display: flex;
+    justify-content: center;
+    animation: float-eye 4s ease-in-out infinite;
+}
+
+.eye {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: conic-gradient(#ff00cc, #ff6600, #ffff00, #00ff88, #00ccff, #cc00ff, #ff00cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin-hue 6s linear infinite;
+    box-shadow:
+        0 0 18px 4px rgba(180, 0, 255, 0.5),
+        0 0 36px 8px rgba(0, 200, 255, 0.3);
+}
+
+.pupil {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0a000f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pupil-inner {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #cc00ff 60%, transparent 100%);
+    animation: pulse-pupil 2s ease-in-out infinite;
+}
+
+/* ── Title ── */
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    background: linear-gradient(90deg, #ff00cc, #aa00ff, #00ccff, #ff00cc);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s linear infinite;
+}
+
+.subtitle {
+    font-size: 11px;
+    color: #7a5a99;
+    letter-spacing: 0.1em;
+    margin-top: -6px;
+}
+
+/* ── Button ── */
+.trip-btn {
+    position: relative;
+    width: 100%;
+    padding: 13px 0;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    overflow: hidden;
+    background: linear-gradient(135deg, #7b00d4, #cc00ff, #ff0080);
+    color: #fff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 0 16px 2px rgba(200, 0, 255, 0.45);
+}
+
+.trip-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 28px 4px rgba(200, 0, 255, 0.65);
+}
+
+.trip-btn:active {
+    transform: scale(0.97);
+}
+
+.trip-btn[data-state="on"] {
+    background: linear-gradient(135deg, #2d0050, #550077, #880000);
+    box-shadow: 0 0 16px 2px rgba(255, 0, 80, 0.4);
+}
+
+.btn-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.hint {
+    font-size: 10px;
+    color: #4a3566;
+    text-align: center;
+    line-height: 1.4;
+    transition: color 0.4s;
+}
+
+.hint.active {
+    color: #9966cc;
+}
+
+/* ── Animations ── */
+@keyframes float-eye {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes spin-hue {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes pulse-pupil {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
